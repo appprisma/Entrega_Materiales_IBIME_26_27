@@ -79,7 +79,7 @@ export function AuthProvider({ children }) {
       throw new Error('Matrícula de empleado no encontrada. Verifica con Sistemas.');
     }
 
-    const datos = { id: snap.id, ...snap.data() };
+   const datos = { id: snap.id, matricula: snap.id, ...snap.data() };
     setEmpleado(datos);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(datos));
     return datos;
