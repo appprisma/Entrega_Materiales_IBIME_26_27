@@ -14,6 +14,7 @@
     "rules": "storage.rules"
   },
   "hosting": {
+    "site": "entrega-materiales-ibime-26-27",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
