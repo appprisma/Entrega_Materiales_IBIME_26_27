@@ -36,6 +36,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
           projectId: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          target: entrega-materiales-ibime-26-27
 
       - name: Instalar dependencias de Cloud Functions
         run: npm install
