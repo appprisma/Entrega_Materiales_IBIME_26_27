@@ -15,7 +15,7 @@ jobs:
           node-version: 20
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Compilar
         run: npm run build
@@ -38,7 +38,7 @@ jobs:
           projectId: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
 
       - name: Instalar dependencias de Cloud Functions
-        run: npm ci
+        run: npm install
         working-directory: functions
 
       - name: Desplegar reglas, índices y Cloud Functions
