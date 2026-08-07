@@ -1,0 +1,9 @@
+matricula,nombre,plantel,grado,grupo,nivel,estatusPago,correoTutor
+24LAG0001,Ana Sofía Martínez López,plantel_1_lagos,1,A,Primaria,al_corriente,papa.martinez@example.com
+24LAG0002,Diego Hernández Ruiz,plantel_1_lagos,1,A,Primaria,pendiente,mama.hernandez@example.com
+24MTP0015,Valeria Gómez Torres,plantel_2_montes_primaria,3,B,Primaria,al_corriente,tutor.gomez@example.com
+24MTS0032,Emiliano Castro Vega,plantel_3_montes_secundaria,2,A,Secundaria,pendiente,papa.castro@example.com
+24MTB0008,Regina Flores Ortiz,plantel_4_montes_bachillerato,1,C,Bachillerato,al_corriente,mama.flores@example.com
+24SCR0044,Santiago Ramírez Nava,plantel_5_san_cristobal,4,A,Primaria,al_corriente,tutor.ramirez@example.com
+24CO60021,Ximena Morales Cruz,plantel_6_coacalco,2,B,Secundaria,pendiente,papa.morales@example.com
+24CO70009,Mateo Sánchez Rivas,plantel_7_coacalco,5,A,Primaria,al_corriente,mama.sanchez@example.com

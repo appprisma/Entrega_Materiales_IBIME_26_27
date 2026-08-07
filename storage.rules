@@ -1,0 +1,14 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Firmas digitales de padres/tutores: solo lectura/escritura para sesiones
+    // autenticadas (ver nota de seguridad en firestore.rules).
+    match /firmas/{matricula}/{archivo} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+                   && request.resource.size < 3 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

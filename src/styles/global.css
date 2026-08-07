@@ -1,0 +1,168 @@
+:root {
+  --azul: #2f6fed;
+  --azul-oscuro: #12203b;
+  --verde: #1a8f5e;
+  --rojo: #d64545;
+  --ambar: #b8790a;
+  --fondo: #f5f7fb;
+  --borde: #e2e6ef;
+  --texto: #1c2434;
+  --texto-suave: #5b6478;
+  --radio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+button, input, select, textarea { font-family: inherit; font-size: 15px; }
+
+/* ---------- Layout general ---------- */
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 28px;
+  background: #fff;
+  border-bottom: 1px solid var(--borde);
+  flex-wrap: wrap;
+}
+
+.marca { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 20px; color: var(--azul-oscuro); }
+.marca-punto { width: 10px; height: 10px; border-radius: 50%; background: var(--azul); display: inline-block; }
+.marca-sub { font-weight: 400; font-size: 13px; color: var(--texto-suave); margin-left: 4px; }
+
+.app-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.app-nav a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: 14px;
+}
+.app-nav a.active { background: var(--azul); color: #fff; }
+
+.usuario-actual { display: flex; align-items: center; gap: 12px; }
+.usuario-info { display: flex; flex-direction: column; font-size: 13px; line-height: 1.3; text-align: right; }
+.usuario-info span { color: var(--texto-suave); }
+
+.app-main { flex: 1; padding: 28px; max-width: 1100px; width: 100%; margin: 0 auto; }
+
+.contenedor-angosto { max-width: 620px; margin: 0 auto; }
+
+/* ---------- Botones ---------- */
+.btn { border: none; border-radius: var(--radio); padding: 12px 18px; font-weight: 600; cursor: pointer; transition: 0.15s ease; }
+.btn-primario { background: var(--azul); color: #fff; }
+.btn-primario:hover:not(:disabled) { background: #2559c4; }
+.btn-primario:disabled { background: #a9bdea; cursor: not-allowed; }
+.btn-secundario { background: #fff; color: var(--azul); border: 1px solid var(--azul); }
+.btn-ghost { background: transparent; color: var(--texto-suave); }
+.btn-ghost:hover { color: var(--texto); }
+.btn-chico { padding: 6px 10px; font-size: 13px; }
+.btn-ancho { width: 100%; margin-top: 14px; }
+
+/* ---------- Formularios ---------- */
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; color: var(--texto-suave); }
+input, select, textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--texto);
+  background: #fff;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--azul); outline-offset: 1px; }
+
+.campo-ancho { display: flex; flex-direction: column; gap: 6px; margin: 16px 0; }
+.etiqueta-firma { font-weight: 600; font-size: 13px; color: var(--texto-suave); }
+
+.barra-busqueda { display: flex; gap: 10px; margin: 16px 0; }
+.barra-busqueda input { flex: 1; }
+
+/* ---------- Login ---------- */
+.pantalla-login { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--azul-oscuro), #1c3568); }
+.tarjeta-login { background: #fff; padding: 36px; border-radius: 16px; width: 340px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+.marca-login { justify-content: center; font-size: 26px; margin-bottom: -6px; }
+.subtitulo-login { text-align: center; color: var(--texto-suave); margin: 0 0 8px; font-size: 14px; }
+.nota-login { font-size: 12px; color: var(--texto-suave); text-align: center; margin: 4px 0 0; }
+
+/* ---------- Alertas ---------- */
+.alerta { padding: 12px 14px; border-radius: 8px; font-size: 14px; margin: 10px 0; }
+.alerta-error { background: #fdeaea; color: var(--rojo); border: 1px solid #f6c9c9; }
+.alerta-exito { background: #e8f7f0; color: var(--verde); border: 1px solid #bfe9d4; }
+
+/* ---------- Badges de estatus ---------- */
+.badge { padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+.badge-ok { background: #e8f7f0; color: var(--verde); }
+.badge-alerta { background: #fdeaea; color: var(--rojo); }
+.badge-convenio { background: #fdf1e0; color: var(--ambar); }
+
+/* ---------- Tarjeta alumno ---------- */
+.tarjeta-alumno { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 20px; margin-top: 16px; }
+.tarjeta-alumno-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.tarjeta-alumno-header h2, .tarjeta-alumno-header h1 { margin: 0 0 4px; }
+.tarjeta-alumno-header p { margin: 0; color: var(--texto-suave); font-size: 14px; }
+
+.ficha-datos { display: grid; gap: 10px; margin: 18px 0; }
+.ficha-datos > div { display: flex; justify-content: space-between; gap: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--borde); font-size: 14px; }
+.ficha-datos dt { color: var(--texto-suave); }
+.ficha-datos dd { margin: 0; font-weight: 600; text-align: right; }
+
+/* ---------- Tabs entrega/recepción ---------- */
+.tabs { display: flex; gap: 8px; margin: 20px 0 14px; }
+.tab { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--borde); background: #fff; font-weight: 600; cursor: pointer; color: var(--texto-suave); }
+.tab.activo { background: var(--azul-oscuro); color: #fff; border-color: var(--azul-oscuro); }
+
+.lista-materiales { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px; margin-bottom: 6px; }
+.lista-materiales h3 { margin-top: 0; }
+.fila-checkbox { flex-direction: row; align-items: center; gap: 10px; font-weight: 400; color: var(--texto); padding: 6px 0; }
+
+.firma-caja { background: #fff; border: 1px solid var(--borde); border-radius: 8px; padding: 8px; }
+
+.enlace-volver { display: inline-block; margin-bottom: 14px; color: var(--azul); text-decoration: none; font-weight: 600; font-size: 14px; }
+
+/* ---------- Dashboard ---------- */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+.filtros { display: flex; gap: 14px; flex-wrap: wrap; background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 14px; margin-bottom: 20px; }
+.filtros label { min-width: 160px; }
+
+.tarjetas-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.kpi { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+.kpi-valor { font-size: 32px; font-weight: 800; color: var(--azul-oscuro); }
+.kpi-etiqueta { font-size: 13px; color: var(--texto-suave); }
+
+.tarjeta-grafica, .tarjeta-tabla { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 18px; margin-bottom: 20px; }
+.tabla-scroll { overflow-x: auto; margin-top: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--borde); white-space: nowrap; }
+th { color: var(--texto-suave); font-weight: 700; }
+
+.detalle-ids { margin: 14px 0; font-size: 13px; color: var(--texto-suave); }
+.detalle-ids ul { columns: 2; }
+
+/* ---------- Panel Admin: editores de listas ---------- */
+.editor-lista { margin-bottom: 22px; }
+.editor-lista h4 { margin: 0 0 8px; font-size: 14px; color: var(--azul-oscuro); }
+.lista-editable { list-style: none; padding: 0; margin: 0 0 10px; display: flex; flex-direction: column; gap: 6px; }
+.lista-editable li {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #f8f9fc; border: 1px solid var(--borde); border-radius: 8px;
+  padding: 8px 12px; font-size: 14px;
+}
+
+.texto-ayuda { color: var(--texto-suave); font-size: 14px; }
+.pantalla-carga { padding: 60px; text-align: center; color: var(--texto-suave); }
+
+@media (max-width: 720px) {
+  .app-header { flex-direction: column; align-items: stretch; }
+  .usuario-actual { justify-content: space-between; }
+  .app-main { padding: 16px; }
+}

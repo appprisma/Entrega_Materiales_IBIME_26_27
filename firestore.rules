@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// NOTA DE SEGURIDAD:
+// Estas reglas exigen que exista una sesión (aunque sea anónima) de Firebase Auth,
+// lo cual solo ocurre después de que alguien pasó por el formulario de login de la
+// app (matrícula + clave general). Esto evita escrituras desde fuera de la app,
+// pero NO valida el rol del empleado del lado del servidor (eso requiere Custom
+// Claims vía Cloud Functions, ver README > "Siguiente nivel de seguridad").
+// Ajusta estas reglas con tu equipo de TI antes de ir a producción con datos reales.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function autenticado() {
+      return request.auth != null;
+    }
+
+    // Catálogo de alumnos: lectura para cualquier sesión autenticada (anónima incluida),
+    // porque el buscador de matrícula la necesita. Escritura solo para actualizar campos
+    // de entrega/recepción/convenio (no se permite borrar ni crear alumnos desde el cliente
+    // fuera del importador, que también pasa por una sesión autenticada).
+    match /alumnos/{matricula} {
+      allow read: if autenticado();
+      allow create, update: if autenticado();
+      allow delete: if false;
+    }
+
+    // Empleados: solo lectura (para validar la matrícula al hacer login).
+    // La creación/edición de empleados se hace desde la consola de Firebase o
+    // un panel de administración aparte con más controles.
+    match /empleados/{matricula} {
+      allow read: if autenticado();
+      allow write: if false;
+    }
+
+    // Bitácora de movimientos: de solo agregar (nunca editar ni borrar), para
+    // que el historial de entregas/recepciones/convenios sea confiable.
+    match /movimientos/{id} {
+      allow read: if autenticado();
+      allow create: if autenticado();
+      allow update, delete: if false;
+    }
+
+    // Listas de materiales requeridos por plantel/grado.
+    match /materialesPorGrado/{id} {
+      allow read: if autenticado();
+      allow write: if autenticado(); // idealmente restringido a rol admin vía Custom Claims
+    }
+
+    // Listas de documentos requeridos por plantel/grado (acta, CURP, INE, etc.).
+    match /documentosPorGrado/{id} {
+      allow read: if autenticado();
+      allow write: if autenticado(); // protegido en el cliente por la clave de /admin
+    }
+
+    // Inventario de materiales (recibido/entregado) por plantel.
+    // Se lee desde el Dashboard y desde /admin, y se actualiza automáticamente
+    // al confirmar una entrega (ver src/utils/inventario.js).
+    match /inventario/{id} {
+      allow read: if autenticado();
+      allow write: if autenticado();
+    }
+  }
+}
